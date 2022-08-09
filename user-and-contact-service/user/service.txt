@@ -1,0 +1,3 @@
+user_service-port = 9010
+contact_service-port = 9020
+eureka_service-port = 9030

@@ -1,0 +1,26 @@
+server:
+   port: 9040
+   
+      
+eureka:
+   client:
+      service-url:
+         defaultZone: http://localhost:9030/eureka
+         
+   instance:
+      preferIpAddress: true
+      hostname: localhost
+      
+spring:
+  application:
+     name: api-getway
+  cloud:
+    gateway:
+      routes:
+      - id: user-service
+        uri: lb:/uer-
+        predicates:
+        - Path=/employee/**
+      - id: consumerModule
+        uri: http://localhost:8082/
+      

@@ -1,0 +1,17 @@
+server:
+   port: 9030
+   
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9030/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
+    
+    
+spring:
+   application:
+      name: e
+   
