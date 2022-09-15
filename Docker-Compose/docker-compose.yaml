@@ -39,8 +39,6 @@ services:
      - eureka-server
      - contact
      - user
-
-
     environments:
     EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
 
