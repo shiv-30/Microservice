@@ -1,0 +1,63 @@
+version: '3.7'
+
+services:
+
+  user:
+    images: user:0.0.1.RELEASE
+    mem_limit: 700m
+    ports: 
+      - "9010:9010"
+    networks: 
+      - eureka-network
+    depends_on:
+      - eureka-server
+      - contact
+    environments:
+    EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
+
+
+  contact: 
+    images: contact:0.0.1.RELEASE
+    mem_limit: 700m
+    ports:
+      - "9020:9020"
+    networks:
+      - eureka-network
+    depends_on:
+      - eureka-server
+    environments:
+    EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
+
+  apigateway:
+    images: apigateway:0.0.1.RELEASE
+    mem_limit: 700m
+    ports:
+     - "9040:9040"
+    networks:
+     - eureka-network
+    depends_on:
+     - eureka-server
+     - contact
+     - user
+
+
+    environments:
+    EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
+
+  eureka-server: 
+    images: eureka-server:0.0.1.RELEASE
+    mem_limit: 700m
+    ports:
+      - "9030:9030"
+
+    networks:
+      - eureka-network
+
+  networks:
+    - eureka-network
+
+
+
+
+
+

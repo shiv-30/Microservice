@@ -1,6 +1,11 @@
 server:
    port: 9030
-   
+
+spring:
+   application:
+      name: eureka-server
+      
+         
 eureka:
   client:
     service-url:
@@ -11,7 +16,5 @@ eureka:
     hostname: localhost
     
     
-spring:
-   application:
-      name: eureka-server
+
    
