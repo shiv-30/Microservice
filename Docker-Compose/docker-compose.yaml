@@ -12,7 +12,7 @@ services:
     depends_on:
       - eureka-server
       - contact
-    environments:
+    environment:
     EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
 
 
@@ -25,7 +25,7 @@ services:
       - eureka-network
     depends_on:
       - eureka-server
-    environments:
+    environment:
     EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
 
   apigateway:
@@ -39,7 +39,7 @@ services:
      - eureka-server
      - contact
      - user
-    environments:
+    environment:
     EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
 
   eureka-server: 
