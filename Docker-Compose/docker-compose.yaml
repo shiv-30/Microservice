@@ -54,7 +54,7 @@ services:
       - eureka-network
 
   networks:
-    - eureka-network
+    eureka-network:
 
 
 
