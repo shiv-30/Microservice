@@ -1,0 +1,5 @@
+com\contacts\ContactApplication.class
+com\contacts\service\ContactService.class
+com\contacts\entity\Contact.class
+com\contacts\service\ContactServiceImpl.class
+com\contacts\controller\ContactController.class
