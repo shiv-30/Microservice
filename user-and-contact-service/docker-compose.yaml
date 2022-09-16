@@ -42,7 +42,7 @@ services:
 
   eureka-server:
     image: eureka-server:0.0.1-RELEASE
-    container_server: eureka-server
+    container_name: eureka-server
     mem_limit: 700m
     ports:
       - "9030:9030"
