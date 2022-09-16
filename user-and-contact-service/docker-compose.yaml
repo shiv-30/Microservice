@@ -6,8 +6,16 @@ services:
     image: apigateway:0.0.1-RELEASE
     container_name: apigateway
     mem_limit: 700m
+    expose: 
+      - 9040
     ports:
       - "9040:9040"
+    networks:
+      - eureka-network
+    links:
+      - eureka-server:eureka-server
+      - user-service:user-service
+      - contact-service:contact-service
     depends_on:
       - eureka-server
       - user-service
@@ -20,8 +28,16 @@ services:
     image: user-service:0.0.1-RELEASE
     container_name: user-service
     mem_limit: 700m
+    expose: 
+      - 9010
     ports:
       - "9010:9010"
+    networks:
+      - eureka-network
+    links:
+      - eureka-server:eureka-server
+      - contact-service:contact-service
+    
     depends_on:
       - eureka-server
       - contact-service
@@ -33,8 +49,14 @@ services:
     image: contact-service:0.0.1-RELEASE
     container_name: contact-service
     mem_limit: 700m
+    expose: 
+      - 9020
     ports:
       - "9020:9020"
+    networks:
+      - eureka-network
+    links:
+      - eureka-server:eureka-server
     depends_on:
       - eureka-server
     environment:
@@ -43,8 +65,20 @@ services:
   eureka-server:
     image: eureka-server:0.0.1-RELEASE
     container_name: eureka-server
+    expose: 9030
     mem_limit: 700m
+    expose: 
+      - 9030
     ports:
       - "9030:9030"
+    networks:
+      - eureka-network
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
+    
+      
+networks:
+  eureka-network:
+     driver: bridge
 
 
