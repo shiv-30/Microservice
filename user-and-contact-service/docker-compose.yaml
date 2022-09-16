@@ -1,0 +1,50 @@
+version: '3.7'
+
+services:
+
+  apigateway:
+    image: apigateway:0.0.1-RELEASE
+    container_name: apigateway
+    mem_limit: 700m
+    ports:
+      - "9040:9040"
+    depends_on:
+      - eureka-server
+      - user-service
+      - contact-service
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
+ 
+
+  user-service:
+    image: user-service:0.0.1-RELEASE
+    container_name: user-service
+    mem_limit: 700m
+    ports:
+      - "9010:9010"
+    depends_on:
+      - eureka-server
+      - contact-service
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
+ 
+
+  contact-service:
+    image: contact-service:0.0.1-RELEASE
+    container_name: contact-service
+    mem_limit: 700m
+    ports:
+      - "9020:9020"
+    depends_on:
+      - eureka-server
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
+
+  eureka-server:
+    image: eureka-server:0.0.1-RELEASE
+    container_server: eureka-server
+    mem_limit: 700m
+    ports:
+      - "9030:9030"
+
+
