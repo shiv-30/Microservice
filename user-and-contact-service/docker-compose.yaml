@@ -21,7 +21,7 @@ services:
       - user-service
       - contact-service
     environment:
-      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://192.168.0.7:9030/eureka
  
 
   user-service:
@@ -42,7 +42,7 @@ services:
       - eureka-server
       - contact-service
     environment:
-      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://192.168.0.7:9030/eureka
  
 
   contact-service:
@@ -60,7 +60,7 @@ services:
     depends_on:
       - eureka-server
     environment:
-      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://192.168.0.7:9030/eureka
 
   eureka-server:
     image: eureka-server:0.0.1-RELEASE
@@ -74,7 +74,7 @@ services:
     networks:
       - eureka-network
     environment:
-      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://localhost:9030/eureka
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://192.168.0.7:9030/eureka
     
       
 networks:

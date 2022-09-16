@@ -5,11 +5,11 @@ server:
 eureka:
    client:
       service-url:
-         defaultZone: http://localhost:9030/
+         defaultZone: http://192.168.0.7:9030/
          
    instance:
       preferIpAddress: true
-      hostname: localhost
+      hostname: 192.168.0.7
       
 spring:
   application:
@@ -18,10 +18,10 @@ spring:
     gateway:
       routes:
       - id: user-service
-        uri: http://localhost:9010
+        uri: http://192.168.0.7:9010
         predicates:
         - Path=/users/**
       - id: contact-service
-        uri: http://localhost:9020
+        uri: http://192.168.0.7:9020
         predicates:
         - Path=/contact/**
