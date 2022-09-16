@@ -19,4 +19,4 @@ COPY ./target ./target
 RUN chmod 755 /app/mvnw
 
 RUN ls -al
-ENTRYPOINT ["java","-jar","target/contact-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","target/contact-sercie-0.0.1-SNAPSHOT.jar"]
